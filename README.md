@@ -1,2 +1,3 @@
-# React-Native-Project
-This repo is made for the React Native simple project , for the practice purposes
+# React Native Sample Project
+This repo is made for the React Native simple project , as rating repositories in github.
+
