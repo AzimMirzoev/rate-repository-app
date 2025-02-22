@@ -4,54 +4,65 @@ import theme from '../styles/theme';
 
 const styles = StyleSheet.create({
 	separator: {
-		height: '10',
-		marginBottom: '5',
-		backgroundColor: 'gray',
+		height: 10,
+		marginBottom: 5,
+		backgroundColor: '#D3D3D3',
 	},
+		
 	repository_wrap: {
-		display: 'flex',
-		width: "auto",
+		flex: 1,
 		flexDirection: 'column',
-		height: "40",
-		paddingBottom: '15',
-		margin: '15',
+		height: 200,
+		padding: 5,
+		height: 'auto',
+
 	},
 	repo_info: {
-		display: 'flex',
+		flex: 1,
 		flexDirection: 'row',
-		justifyContent: 'space-between',
+		justifyContent: 'space-evenly',
 		alignItems: 'center',
+		marginTop: 10,
 	},
 	user_info: {
-		display: 'flex',
 		flexDirection: 'row',
-		width: 'auto',
-		height: '25',
+		height: 70,
+		paddingBottom: 10,
 	},
 	user_img: {
-		width: '10',
-		height: '10',
-		borderRadius: '3',
+		width: 60,
+		height: 60,
+		borderRadius: 3,
 	},
 	user_info_detail: {
-		width: 'auto',
-		display: 'flex',
+		flex: 1,
 		flexDirection: 'column',
-		alignItems: 'start',
+		alignItems: 'flex-start',
 		justifyContent: 'space-between',
+		marginLeft: 10,
 	},
 	fullname: {
 		fontWeight: "bold",
+		padding: 5,
 	},
 	description: {
 		color: 'gray',
-		
+		width: 250,
+		padding: 5,
 	},
 	language: {
 		color: "white",
 		backgroundColor: theme.colors.primary,
-		borderRadius: "3",
-		padding: '5',
+		borderRadius: 3,
+		padding: 5,
+		marginTop: 5,
+	},
+	names: {
+		alignSelf: "center",
+	},
+	nums: {
+		fontWeight: 'bold',
+		alignSelf: 'center',
 	}
 
 
@@ -112,6 +123,10 @@ function ItemSeparator(){
 }
 
 
+
+
+
+
 function RepositoryItem({fullName, description, language, stars, forks, reviews, rating, imgUri}){
 	
 	return (
@@ -126,11 +141,29 @@ function RepositoryItem({fullName, description, language, stars, forks, reviews,
 					<Text style={styles.language}>{language}</Text>
 				</View>
 			</View>
+
 			<View style={styles.repo_info}>
-				<Text>Stars</Text>
-				<Text>Forks</Text>
-				<Text>Likes</Text>
-				<Text>Reviews</Text>	
+
+				<View>
+					<Text style={styles.nums}> {stars}</Text>
+					<Text style={styles.names}> Stars</Text>
+				</View>
+				
+				<View>
+					<Text style={styles.nums}>{forks}</Text>
+					<Text style={styles.names}>Forks</Text>
+				</View>
+				
+				<View>
+					<Text style={styles.nums}>{reviews}</Text>
+					<Text style={styles.names}>Reviews</Text>
+				</View>
+				
+				<View>
+					<Text style={styles.nums}>{rating}</Text>	
+					<Text style={styles.names}>Rating</Text>
+				</View>
+				
 			</View>
 
 		</View>
