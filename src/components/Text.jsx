@@ -33,7 +33,10 @@ function Text({color, fontSize, fontWeight, style, ...props}){
 		fontWeight === 'bold' && styles.fontWeightBold,
 		style,
 	];
-
+	
+	// so when we put the style here it means adding new values to the NativeText styling 
+	
+	
 	return NativeText style ={textStyle} {...props} />
 }
 

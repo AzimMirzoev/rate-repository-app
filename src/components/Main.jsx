@@ -17,9 +17,8 @@ function Main(){
 	return (
 
 		<View style={styles.container}>
-			<Text>Rate Repository App</Text>
+			<RepositoryList></RepositoryList>
 
-			<RepositoryList />
 		</View>
 	);
 }

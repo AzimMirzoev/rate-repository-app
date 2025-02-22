@@ -1,9 +1,62 @@
-import {Text, View, StyleSheet, FlatList} from 'react-native';
+import {Text,Image, View, StyleSheet, FlatList} from 'react-native';
+import theme from '../styles/theme';
+
 
 const styles = StyleSheet.create({
 	separator: {
-		height: 10,
+		height: '10',
+		marginBottom: '5',
+		backgroundColor: 'gray',
 	},
+	repository_wrap: {
+		display: 'flex',
+		width: "auto",
+		flexDirection: 'column',
+		height: "40",
+		paddingBottom: '15',
+		margin: '15',
+	},
+	repo_info: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+	user_info: {
+		display: 'flex',
+		flexDirection: 'row',
+		width: 'auto',
+		height: '25',
+	},
+	user_img: {
+		width: '10',
+		height: '10',
+		borderRadius: '3',
+	},
+	user_info_detail: {
+		width: 'auto',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'start',
+		justifyContent: 'space-between',
+	},
+	fullname: {
+		fontWeight: "bold",
+	},
+	description: {
+		color: 'gray',
+		
+	},
+	language: {
+		color: "white",
+		backgroundColor: theme.colors.primary,
+		borderRadius: "3",
+		padding: '5',
+	}
+
+
+
+
 });
 
 const repositories = [
@@ -55,21 +108,31 @@ const repositories = [
 ];
 
 function ItemSeparator(){
-	return <View style={styles.separator}> </View>
+	return <View style={styles.separator}></View>
 }
 
 
-function RepositoryItem({fullName, description, language, stars, forks, reviews, rating}){
+function RepositoryItem({fullName, description, language, stars, forks, reviews, rating, imgUri}){
+	
 	return (
-		<View>
+		<View style={styles.repository_wrap}>
 
-			<Text>Fullname: {fullName}</Text>
-			<Text>Description: {description}</Text>
-			<Text>Language: {language}</Text>
-			<Text>Stars: {stars}</Text>
-			<Text>Forks: {forks}</Text>
-			<Text>Reviews: {reviews}</Text>
-			<Text>Rating: {rating}</Text>
+			<View style={styles.user_info}>
+				<Image style={styles.user_img} source={{uri: imgUri}}/>
+		
+				<View style={styles.user_info_detail}>
+					<Text style={styles.fullname}>{fullName}</Text>
+					<Text style={styles.description}>{description}</Text>
+					<Text style={styles.language}>{language}</Text>
+				</View>
+			</View>
+			<View style={styles.repo_info}>
+				<Text>Stars</Text>
+				<Text>Forks</Text>
+				<Text>Likes</Text>
+				<Text>Reviews</Text>	
+			</View>
+
 		</View>
 	);
 
@@ -80,10 +143,9 @@ function RepositoryList(){
 		<FlatList 
 			data={repositories}
 			ItemSeparatorComponent={ItemSeparator}
-			renderItem={({item})=> <RepositoryItem fullName={item.fullName} description={item.description} language={item.language} stars={item.stargazersCount} forks={item.forksCount} reviews={item.reviewCount} rating={item.ratingAverage}/> }
+			renderItem={({item})=> <RepositoryItem imgUri={item.ownerAvatarUrl} fullName={item.fullName} description={item.description} language={item.language} stars={item.stargazersCount} forks={item.forksCount} reviews={item.reviewCount} rating={item.ratingAverage}/> }
 		/>
 	);
 }
 
 export default RepositoryList;
-
