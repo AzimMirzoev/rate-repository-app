@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		height: 200,
 		padding: 5,
-		height: 'auto',
 
 	},
 	repo_info: {
@@ -28,6 +27,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		height: 70,
 		paddingBottom: 10,
+		flex: 1,
 	},
 	user_img: {
 		width: 60,
